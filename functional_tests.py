@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import unittest
 
+
 class NewVisitorTest(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -33,11 +34,11 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(any(row.text == '1: Buy peacock feathers' for row in rows))
+        self.assertTrue(any(row.text == '1: Buy peacock feathers' for row in rows),
+                        "New to-do item did not appear in table")
         # There is still a text box inviting her to add mote items to the list as before.
         # She enters "Use Peacock feathers to make a fly"
         self.fail('Finish the test!')
-
 
         # The page updates again, and now both items appear on her list.
 
@@ -47,5 +48,7 @@ class NewVisitorTest(unittest.TestCase):
         # She visits that URL  - and her to-do list is still there!
 
         # Satisfied she turns off her computer and she goes back to sleep.
+
+
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
